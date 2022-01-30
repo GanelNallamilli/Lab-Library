@@ -6,14 +6,17 @@ import scipy.optimize
 def scattergraph(xData,yData, xError = 0, yError = 0,error_label = "",error_alpha = 1,error_color = "blue", data_color = "black", marker_icon = "x",data_label = ""):
     fig, ax = plt.subplots()
 
+    #Converts all data into nump arrays
     xData = np.array(xData)
     yData = np.array(yData)
     xError = np.array(xError)
     yError = np.array(yError)
 
+    #Fills the area between the upper and lower bounds of error values.
     ax.fill_betweenx(yData, xData-xError, xData+xError,alpha = error_alpha,color = error_color)
     ax.fill_between(xData, yData-yError, yData+yError,alpha = error_alpha,color = error_color,label = error_label)
 
+    #Produces a scatter graph of the data
     ax.scatter(xData,yData,marker = marker_icon,color = data_color,label = data_label)
 
     plt.rcdefaults()
