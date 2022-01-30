@@ -11,11 +11,11 @@ def scattergraph(xData,yData, xError = 0, yError = 0,error_label = "",error_alph
     xError = np.array(xError)
     yError = np.array(yError)
 
-    upperFit = yData+yError
-    lowerFit = yData-yError
     ax.fill_betweenx(yData, xData-xError, xData+xError,alpha = error_alpha,color = error_color)
-    ax.fill_between(xData, lowerFit, upperFit,alpha = error_alpha,color = error_color,label = error_label)
+    ax.fill_between(xData, yData-yError, yData+yError,alpha = error_alpha,color = error_color,label = error_label)
+
     ax.scatter(xData,yData,marker = marker_icon,color = data_color,label = data_label)
+
     plt.rcdefaults()
     plt.rcParams.update({
         "figure.facecolor":  ('#e0e0e0'),  # red   with alpha = 30%
